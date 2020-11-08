@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import MobileCoreServices
+
 
 
 class ViewController: UIViewController {
@@ -17,7 +17,6 @@ class ViewController: UIViewController {
 
       
         
-        
     }
     
 
@@ -27,8 +26,6 @@ class ViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
     }
  
-    
-    
     
 
 }

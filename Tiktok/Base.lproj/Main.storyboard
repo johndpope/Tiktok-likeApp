@@ -34,10 +34,10 @@
             </objects>
             <point key="canvasLocation" x="1187.6923076923076" y="88.862559241706151"/>
         </scene>
-        <!--View Controller-->
+        <!--Set Up View Controller-->
         <scene sceneID="pXC-aB-izK">
             <objects>
-                <viewController id="zQY-W1-Isd" sceneMemberID="viewController">
+                <viewController id="zQY-W1-Isd" customClass="SetUpViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fMH-lj-tqF">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +51,13 @@
                                 <rect key="frame" x="16" y="682" width="91" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="album"/>
+                                <connections>
+                                    <action selector="openAlbum:" destination="zQY-W1-Isd" eventType="touchUpInside" id="sSP-oa-x05"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heq-TB-Ry0" customClass="SwiftyRecordButton">
+                                <rect key="frame" x="144" y="697" width="103" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Rej-Ey-7d6"/>
@@ -58,6 +65,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="Rok-BH-Rvs"/>
                     <connections>
+                        <outlet property="captureButton" destination="heq-TB-Ry0" id="9Vu-7j-zAX"/>
+                        <outlet property="flipCameraButton" destination="R2K-Et-M9l" id="RFp-LN-ZFx"/>
                         <segue destination="7Ca-NH-Bpd" kind="show" id="3iS-hW-XVS"/>
                     </connections>
                 </viewController>
