@@ -46,6 +46,9 @@
                                 <rect key="frame" x="283" y="682" width="91" height="91"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="flip"/>
+                                <connections>
+                                    <action selector="cameraSwitchTapped:" destination="zQY-W1-Isd" eventType="touchUpInside" id="LRM-EO-SBi"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="exC-TQ-1dv">
                                 <rect key="frame" x="16" y="682" width="91" height="91"/>
@@ -92,10 +95,10 @@
             </objects>
             <point key="canvasLocation" x="435.38461538461536" y="88.862559241706151"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit View Controller-->
         <scene sceneID="ECd-bJ-ch6">
             <objects>
-                <viewController id="7Ca-NH-Bpd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7Ca-NH-Bpd" customClass="EditViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UyA-ja-PUP">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -132,10 +135,10 @@
             </objects>
             <point key="canvasLocation" x="2603.0769230769229" y="88.862559241706151"/>
         </scene>
-        <!--View Controller-->
+        <!--Select View Controller-->
         <scene sceneID="UEM-Bf-6dM">
             <objects>
-                <viewController id="AJL-JD-iwi" customClass="ViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AJL-JD-iwi" customClass="SelectViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAM-Ly-jqx">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -159,14 +162,14 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="楽曲名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Bf-m4-jmY">
                                                     <rect key="frame" x="128" y="11" width="181" height="47"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アーティスト名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBL-HB-VdK">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="アーティスト名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBL-HB-VdK">
                                                     <rect key="frame" x="128" y="66" width="181" height="33"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -194,10 +197,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="R1F-Sr-aHC"/>
+                    <connections>
+                        <outlet property="searchTextField" destination="MNC-CI-ZdP" id="Wc6-TI-Q9F"/>
+                        <outlet property="tableView" destination="hFl-fy-m6f" id="to3-gB-P6l"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bds-jX-49O" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3293.8461538461538" y="88.862559241706151"/>
+            <point key="canvasLocation" x="3303" y="89"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="RxO-Rw-Wig">
