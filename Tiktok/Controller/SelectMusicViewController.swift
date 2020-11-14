@@ -77,6 +77,20 @@ class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        refleshData()
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    
     @objc func favButtonTap(_ sender:UIButton){
         
         //音声が流れていれば止める
@@ -173,7 +187,14 @@ class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableVie
             searchTextField.resignFirstResponder()
             
         }
-        
     }
 
+    
+    @IBAction func searchAction(_ sender: Any) {
+        
+        refleshData()
+        
+    }
+    
+    
 }

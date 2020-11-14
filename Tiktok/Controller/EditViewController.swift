@@ -14,6 +14,7 @@ class EditViewController: UIViewController {
     var playerController:AVPlayerViewController?
     var player:AVPlayer?
     var capTionString = String()
+    var passedURL = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +74,7 @@ class EditViewController: UIViewController {
     }
     
     
-    @objc func playerItemDidReachEnd(){
+    @objc func playerItemDidReachEnd(_ notification:Notification){
         
         //くり返し
         if self.player != nil{
@@ -101,10 +102,25 @@ class EditViewController: UIViewController {
                     
                     self.setUPVideoPlayer(url: URL(string: url)!)
                     self.capTionString = text1 + "\n" + text2
+                    self.passedURL = url
                 }
             }
             
         }
+        
+        if segue.identifier == "shareVC"{
+            
+            let shareVC = segue.destination as! ShareViewController
+            shareVC.captionString = self.capTionString
+            shareVC.passedURL = self.passedURL
+        }
+        
+    }
+    
+    
+    @IBAction func showSelectVC(_ sender: Any) {
+        
+        performSegue(withIdentifier: "selectVC", sender: nil)
         
     }
     
