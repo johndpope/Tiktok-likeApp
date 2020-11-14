@@ -21,6 +21,7 @@
 		9679FC12255AE3470050A29D /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679FC11255AE3470050A29D /* EditViewController.swift */; };
 		9679FC15255C185B0050A29D /* SelectMusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9679FC14255C185B0050A29D /* SelectMusicViewController.swift */; };
 		968EBBE1255D7B8F00ACA22E /* MusicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968EBBE0255D7B8F00ACA22E /* MusicModel.swift */; };
+		96A2F284255FDC55001946F0 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96A2F283255FDC55001946F0 /* ShareViewController.swift */; };
 		986B4BE0BFA27FD5DBF182C1 /* Pods_Tiktok.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 091950658C9FAD4C4044B413 /* Pods_Tiktok.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		9679FC11255AE3470050A29D /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
 		9679FC14255C185B0050A29D /* SelectMusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMusicViewController.swift; sourceTree = "<group>"; };
 		968EBBE0255D7B8F00ACA22E /* MusicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicModel.swift; sourceTree = "<group>"; };
+		96A2F283255FDC55001946F0 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		D299777292E96A5DC753D753 /* Pods-Tiktok.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tiktok.debug.xcconfig"; path = "Target Support Files/Pods-Tiktok/Pods-Tiktok.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +119,7 @@
 				963A662525578A6A00014B96 /* SetUpViewController.swift */,
 				9679FC11255AE3470050A29D /* EditViewController.swift */,
 				9679FC14255C185B0050A29D /* SelectMusicViewController.swift */,
+				96A2F283255FDC55001946F0 /* ShareViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				968EBBE1255D7B8F00ACA22E /* MusicModel.swift in Sources */,
 				963A66222556EEBD00014B96 /* ViewController.swift in Sources */,
 				9679FC0C2557963D0050A29D /* AuthCheck.swift in Sources */,
+				96A2F284255FDC55001946F0 /* ShareViewController.swift in Sources */,
 				963A66022556ED1100014B96 /* AppDelegate.swift in Sources */,
 				9679FC0F255796660050A29D /* VAVideoCompressor.swift in Sources */,
 				963A66042556ED1100014B96 /* SceneDelegate.swift in Sources */,

@@ -11,7 +11,7 @@ import AVFoundation
 import SwiftVideoGenerator
 
 
-class SelectViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
+class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
   
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
@@ -21,6 +21,9 @@ class SelectViewController: UIViewController,UITableViewDelegate,UITableViewData
     var videoPath = String()
     var passedURL:URL?
     
+    //遷移元から処理を受け取るクロージャーのプロパティ
+    var resultHandler:((String,String,String)->Void)?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,6 @@ class SelectViewController: UIViewController,UITableViewDelegate,UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        
         
     }
     
@@ -42,6 +44,7 @@ class SelectViewController: UIViewController,UITableViewDelegate,UITableViewData
         
         return musicModel.artistNameArray.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -74,6 +77,48 @@ class SelectViewController: UIViewController,UITableViewDelegate,UITableViewData
     }
     
     
+    @objc func favButtonTap(_ sender:UIButton){
+        
+        //音声が流れていれば止める
+        if player?.isPlaying == true{
+            
+            player?.stop()
+        }
+        
+        //ローディングする
+        LoadingView.lockView()
+        //ファイル名決める
+        VideoGenerator.fileName = "newAudioMovie"
+        //動画と音声を合成する(一定時間かかる)
+        VideoGenerator.current.mergeVideoWithAudio(videoUrl: passedURL!, audioUrl: URL(string: self.musicModel.preViewUrlArray[sender.tag])!) { (result) in
+            
+            //結果返ってきているのでローディング閉じる
+            LoadingView.unlockView()
+            
+            switch result{
+            
+            case .success(let url):
+                
+                //urlをstringに変換してグローバル変数に代入
+                self.videoPath = url.absoluteString
+                if let handler = self.resultHandler{
+                    
+                    handler(self.videoPath,self.musicModel.artistNameArray[sender.tag],self.musicModel.trackCensoredNameArray[sender.tag])
+                    
+                }
+                
+                //modalで遷移しているのでdismissで画面戻る
+                self.dismiss(animated: true, completion: nil)
+                
+            case .failure(let error):
+                
+                print(error)
+            }
+        }
+        
+    }
+    
+    
     @objc func playButtonTap(_ sender:UIButton){
         
         //音楽を止める
@@ -83,17 +128,38 @@ class SelectViewController: UIViewController,UITableViewDelegate,UITableViewData
         }
         
         let url = URL(string: musicModel.preViewUrlArray[sender.tag])
-        
+        downLoadMusicURL(url: url!)
     }
     
     
     func downLoadMusicURL(url:URL){
         
+        var downloadTask:URLSessionDownloadTask
+        downloadTask = URLSession.shared.downloadTask(with: url, completionHandler: { (url, response, error) in
+            
+            self.play(url: url!)
+            
+            
+        })
         
-        
-        
+        downloadTask.resume()
     }
     
+    
+    func play(url:URL){
+        
+        do {
+            
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.prepareToPlay()
+            player?.volume = 1.0
+            
+        } catch let error as NSError {
+            
+            print(error.debugDescription)
+            
+        }
+    }
     
     
     func refleshData(){

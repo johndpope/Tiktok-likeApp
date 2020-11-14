@@ -13,11 +13,10 @@ class EditViewController: UIViewController {
     var url:URL?
     var playerController:AVPlayerViewController?
     var player:AVPlayer?
-
+    var capTionString = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-      
         
         
     }
@@ -35,8 +34,8 @@ class EditViewController: UIViewController {
         
         setUPVideoPlayer(url: url!)
     }
-
-   
+    
+    
     func setUPVideoPlayer(url:URL){
         
         //戻ってき場合などに重なりを防ぐため取り除く
@@ -87,5 +86,40 @@ class EditViewController: UIViewController {
     }
     
     
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        //selectVC(最初に遷移)
+        if segue.identifier == "selectVC"{
+            
+            let selectVC = segue.destination as! SelectMusicViewController
+            selectVC.passedURL = url
+            
+            //非同期(selectVCのfavButtonTapで音楽と映像が合成されたら呼ばれる)
+            DispatchQueue.global().async {
+                
+                selectVC.resultHandler = {url,text1,text2 in
+                    
+                    self.setUPVideoPlayer(url: URL(string: url)!)
+                    self.capTionString = text1 + "\n" + text2
+                }
+            }
+            
+        }
+        
+    }
+    
+    
+    @IBAction func next(_ sender: Any) {
+        
+        if capTionString.isEmpty != true{
+            
+            player?.pause()
+            performSegue(withIdentifier: "shareVC", sender: nil)
+            
+        }else{
+            print("楽曲を選択してください")
+        }
+        
+    }
+    
 }

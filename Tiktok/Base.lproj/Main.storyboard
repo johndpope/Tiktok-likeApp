@@ -120,6 +120,9 @@
                                 <state key="normal" title="次へ">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="next:" destination="7Ca-NH-Bpd" eventType="touchUpInside" id="COh-jY-hnm"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="754-T6-4nr"/>
@@ -127,7 +130,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="5nA-g5-3ps"/>
                     <connections>
-                        <segue destination="AJL-JD-iwi" kind="presentation" id="ATt-9Z-UEb"/>
+                        <segue destination="AJL-JD-iwi" kind="presentation" identifier="selectVC" id="ATt-9Z-UEb"/>
                         <segue destination="8R3-wN-H3x" kind="show" id="TX2-3o-FHp"/>
                     </connections>
                 </viewController>
@@ -206,10 +209,10 @@
             </objects>
             <point key="canvasLocation" x="3303" y="89"/>
         </scene>
-        <!--View Controller-->
+        <!--Share View Controller-->
         <scene sceneID="RxO-Rw-Wig">
             <objects>
-                <viewController id="8R3-wN-H3x" customClass="ViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="shareVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8R3-wN-H3x" customClass="ShareViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jX-Zh-ymi">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
