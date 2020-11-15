@@ -130,7 +130,7 @@ class ShareViewController: UIViewController {
     @IBAction func share(_ sender: Any) {
         
         //アクティビティViewにアイテムをのせる,share
-        let activityItems = [passedURL as Any,"\(textView.text!)\n\(captionString)\n#TikTokApp"] as [Any]
+        let activityItems = [URL(string: passedURL) as Any,"\(textView.text!)\n\(captionString)\n#TikTokApp"] as [Any]
         let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
         
         activityController.popoverPresentationController?.sourceView = self.view

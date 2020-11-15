@@ -13,7 +13,7 @@ class EditViewController: UIViewController {
     var url:URL?
     var playerController:AVPlayerViewController?
     var player:AVPlayer?
-    var capTionString = String()
+    var captionString = String()
     var passedURL = String()
     
     override func viewDidLoad() {
@@ -43,6 +43,9 @@ class EditViewController: UIViewController {
         playerController?.removeFromParent()
         player = nil
         
+        //再構築
+        player = AVPlayer(url:url)
+        self.player?.volume = 1
         view.backgroundColor = .black
         
         playerController = AVPlayerViewController()
@@ -101,7 +104,7 @@ class EditViewController: UIViewController {
                 selectVC.resultHandler = {url,text1,text2 in
                     
                     self.setUPVideoPlayer(url: URL(string: url)!)
-                    self.capTionString = text1 + "\n" + text2
+                    self.captionString = text1 + "\n" + text2
                     self.passedURL = url
                 }
             }
@@ -111,7 +114,7 @@ class EditViewController: UIViewController {
         if segue.identifier == "shareVC"{
             
             let shareVC = segue.destination as! ShareViewController
-            shareVC.captionString = self.capTionString
+            shareVC.captionString = self.captionString
             shareVC.passedURL = self.passedURL
         }
         
@@ -127,7 +130,7 @@ class EditViewController: UIViewController {
     
     @IBAction func next(_ sender: Any) {
         
-        if capTionString.isEmpty != true{
+        if captionString.isEmpty != true{
             
             player?.pause()
             performSegue(withIdentifier: "shareVC", sender: nil)

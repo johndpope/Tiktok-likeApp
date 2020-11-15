@@ -9,6 +9,10 @@ import Foundation
 import SwiftyJSON
 import Alamofire
 
+protocol MusicProtocol {
+    func catchData(count:Int)
+}
+
 class MusicModel{
     
     //    //アーティスト名
@@ -24,6 +28,8 @@ class MusicModel{
     var trackCensoredNameArray = [String]()
     var preViewUrlArray = [String]()
     var artworkUrl100Array = [String]()
+    
+    var musicDelegate:MusicProtocol?
     
     //JSON解析
     
@@ -55,10 +61,14 @@ class MusicModel{
                         
                         self.artistNameArray.append(json["results"][i]["artistName"].string!)
                         self.trackCensoredNameArray.append(json["results"][i]["trackCensoredName"].string!)
-                        self.preViewUrlArray.append(json["results"][i]["artistViewUrl"].string!)
+                        self.preViewUrlArray.append(json["results"][i]["previewUrl"].string!)
                         self.artworkUrl100Array.append(json["results"][i]["artworkUrl100"].string!)
                         
                     }
+                    //すべてのデータ取得完了している状態
+                    //selectVCでrelodedataでは通信中に更新する可能性があるので、発動するのは完了確認後のココとなる
+                    self.musicDelegate?.catchData(count: 1)
+                    
                 } catch {
                 }
                 break

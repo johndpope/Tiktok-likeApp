@@ -11,8 +11,9 @@ import AVFoundation
 import SwiftVideoGenerator
 
 
-class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate {
-  
+class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,MusicProtocol {
+   
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
     
@@ -138,7 +139,7 @@ class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableVie
         //音楽を止める
         if player?.isPlaying == true{
             
-            player?.stop()
+            player!.stop()
         }
         
         let url = URL(string: musicModel.preViewUrlArray[sender.tag])
@@ -164,9 +165,10 @@ class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableVie
         
         do {
             
-            player = try AVAudioPlayer(contentsOf: url)
+            self.player = try AVAudioPlayer(contentsOf: url)
             player?.prepareToPlay()
             player?.volume = 1.0
+            player?.play()
             
         } catch let error as NSError {
             
@@ -176,14 +178,24 @@ class SelectMusicViewController: UIViewController,UITableViewDelegate,UITableVie
     }
     
     
+    func catchData(count: Int) {
+        
+        if count == 1{
+            
+            tableView.reloadData()
+        }
+    }
+    
+    
     func refleshData(){
         
         if searchTextField.text?.isEmpty != nil{
             
-            let urlString = "http;//itunes.apple.com/search?term=\(String(describing:searchTextField.text))&entity=song&country=jp"
+            let urlString = "https://itunes.apple.com/search?term=\(String(describing:searchTextField.text!))&entity=song&country=jp"
             
-            let encordUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-            musicModel.setData(resultCount: 50, encodeUrlString: encordUrlString)
+            let encodeUrlString:String = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+            musicModel.musicDelegate = self
+            musicModel.setData(resultCount: 50, encodeUrlString: encodeUrlString)
             searchTextField.resignFirstResponder()
             
         }

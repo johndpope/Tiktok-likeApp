@@ -8,6 +8,8 @@
 import Foundation
 import Photos
 
+
+//今回は使用しない
 class AuthCheck {
     
     func cameraCheck(){

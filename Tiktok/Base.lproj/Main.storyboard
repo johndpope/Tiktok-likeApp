@@ -58,7 +58,7 @@
                                     <action selector="openAlbum:" destination="zQY-W1-Isd" eventType="touchUpInside" id="sSP-oa-x05"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heq-TB-Ry0" customClass="SwiftyRecordButton">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="heq-TB-Ry0" customClass="SwiftyRecordButton" customModule="Tiktok" customModuleProvider="target">
                                 <rect key="frame" x="144" y="697" width="103" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </button>
@@ -134,17 +134,17 @@
                     <navigationItem key="navigationItem" id="5nA-g5-3ps"/>
                     <connections>
                         <segue destination="AJL-JD-iwi" kind="presentation" identifier="selectVC" id="ATt-9Z-UEb"/>
-                        <segue destination="8R3-wN-H3x" kind="show" id="TX2-3o-FHp"/>
+                        <segue destination="8R3-wN-H3x" kind="show" identifier="shareVC" id="TX2-3o-FHp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Agp-mv-jP6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2603.0769230769229" y="88.862559241706151"/>
         </scene>
-        <!--Select View Controller-->
+        <!--Select Music View Controller-->
         <scene sceneID="UEM-Bf-6dM">
             <objects>
-                <viewController id="AJL-JD-iwi" customClass="SelectViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="AJL-JD-iwi" customClass="SelectMusicViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RAM-Ly-jqx">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="790"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -154,7 +154,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="110" id="9Y8-15-9h1">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="110" id="9Y8-15-9h1">
                                         <rect key="frame" x="0.0" y="28" width="390" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Y8-15-9h1" id="2wj-rS-EpD">
@@ -218,7 +218,7 @@
         <!--Share View Controller-->
         <scene sceneID="RxO-Rw-Wig">
             <objects>
-                <viewController storyboardIdentifier="shareVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8R3-wN-H3x" customClass="ShareViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8R3-wN-H3x" customClass="ShareViewController" customModule="Tiktok" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jX-Zh-ymi">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
