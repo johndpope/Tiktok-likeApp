@@ -15,7 +15,6 @@ class ShareViewController: UIViewController {
     var passedURL = String()
     var player:AVPlayer?
     var playerController:AVPlayerViewController?
-    
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
@@ -54,7 +53,8 @@ class ShareViewController: UIViewController {
         self.player?.volume = 1
         
         playerController = AVPlayerViewController()
-        playerController!.view.frame = CGRect(x: 29, y: 88, width: 317, height: 455)
+        playerController?.view.frame = CGRect(x: 0, y: view.frame.size.height * 0.13, width: view.frame.size.width, height: view.frame.size.height * 0.6)
+//        playerController!.view.frame = CGRect(x: 29, y: 88, width: 317, height: 455)
         playerController?.videoGravity = .resizeAspectFill
         playerController!.showsPlaybackControls = false
         playerController!.player = player!
